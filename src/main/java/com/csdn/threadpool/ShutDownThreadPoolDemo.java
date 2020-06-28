@@ -24,6 +24,8 @@ public class ShutDownThreadPoolDemo {
                 System.out.println(Thread.currentThread().getName() + "->执行");
             });
         }
+        // 关闭线程池 如果删除或者注释这一行代码，主线程会一直阻塞
+        service.shutdown();
     }
 
 }
