@@ -1,10 +1,9 @@
 package com.csdn.blockingqueue;
 
-import javax.swing.*;
 import java.util.concurrent.*;
 
 /**
- * {@link DelayQueue}
+ * {@link DelayQueue} 示例
  *
  * @author ：xwf
  * @date ：Created in 2020\7\5 0005 16:08
