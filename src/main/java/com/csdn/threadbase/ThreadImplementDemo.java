@@ -10,7 +10,6 @@ import java.util.concurrent.*;
  */
 public class ThreadImplementDemo {
 
-
     public static void main(String[] args) {
         // 第一种 实现 {@link Runnable} 接口
         new Thread(new RunnableThread()).start();
@@ -22,7 +21,6 @@ public class ThreadImplementDemo {
         callableDemo();
         // 其他
         othersDemo();
-
     }
 
     private static void othersDemo() {
