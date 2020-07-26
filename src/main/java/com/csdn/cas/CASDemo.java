@@ -34,14 +34,37 @@ public class CASDemo {
 
         @Override
         public void run() {
-            casDemo.compareAndSwap(100, 150);
+            casDemo.compareAndSwap(expectedValue, newValue);
         }
     }
 
     public static void main(String[] args) throws InterruptedException {
+        demo1();
+        System.out.println("=============");
+        demoABA();
+    }
+
+    /**
+     * ABA 问题
+     */
+    private static void demoABA() throws InterruptedException {
         CASDemo casDemo = new CASDemo();
         Thread t1 = new Thread(new CASTask(casDemo, 100, 150), "Thread-1");
-        Thread t2 = new Thread(new CASTask(casDemo, 100, 200), "Thread-2");
+        Thread t2 = new Thread(new CASTask(casDemo, 150, 100), "Thread-2");
+        Thread t3 = new Thread(new CASTask(casDemo, 100, 200), "Thread-3");
+        t1.start();
+        t1.join();
+        t2.start();
+        t2.join();
+        t3.start();
+        t3.join();
+        System.out.println("CAS 之后 value 的值：" + casDemo.value);
+    }
+
+    private static void demo1() throws InterruptedException {
+        CASDemo casDemo = new CASDemo();
+        Thread t1 = new Thread(new CASTask(casDemo, 100, 150), "Thread-1");
+        Thread t2 = new Thread(new CASTask(casDemo, 150, 200), "Thread-2");
         t1.start();
         t2.start();
         t1.join();
