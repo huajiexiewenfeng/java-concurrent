@@ -85,7 +85,6 @@ public class FutureCancelDemo {
         public String call() throws Exception {
             while (!Thread.currentThread().isInterrupted()) {
                 System.out.println("循环执行");
-                Thread.sleep(500);
             }
             System.out.println("线程被中断");
             return "正常返回";
